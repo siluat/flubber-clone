@@ -1,0 +1,16 @@
+{
+  "name": "flubber-clone",
+  "version": "0.0.0",
+  "repository": "https://github.com/siluat/flubber-clone.git",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/jest": "^27.0.3",
+    "babel-jest": "^27.4.2",
+    "jest": "^27.4.3"
+  }
+}
