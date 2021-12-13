@@ -14,6 +14,7 @@
     "jest": "^27.4.3"
   },
   "dependencies": {
-    "svg-path-commander": "^0.1.17"
+    "svg-path-commander": "^0.1.17",
+    "svg-path-properties": "^1.0.11"
   }
 }
