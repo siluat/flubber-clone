@@ -4,11 +4,19 @@ import { INVALID_INPUT } from "./errors";
 import { isFiniteNumber } from "./math";
 import { Ring } from "./types";
 
+type PathStringToRingResult = {
+  ring: Ring;
+  skipBisect?: boolean;
+};
+
 export function toPathString(ring: Ring): string {
   return `M${ring.join("L")}Z`;
 }
 
-export function pathStringToRing(str: string, maxSegmentLength: number) {
+export function pathStringToRing(
+  str: string,
+  maxSegmentLength: number
+): PathStringToRingResult {
   const parsed = parse(str);
   return exactRing(parsed) || approximateRing(parsed, maxSegmentLength);
 }
@@ -28,7 +36,7 @@ function split(parsed: SVGPathCommander) {
     .filter((d) => d);
 }
 
-function exactRing(parsed: SVGPathCommander) {
+function exactRing(parsed: SVGPathCommander): PathStringToRingResult | false {
   const segments = parsed.segments || [];
   const ring: Ring = [];
 
@@ -54,7 +62,10 @@ function exactRing(parsed: SVGPathCommander) {
   return ring.length ? { ring } : false;
 }
 
-function approximateRing(parsed: SVGPathCommander, maxSegmentLength: number) {
+function approximateRing(
+  parsed: SVGPathCommander,
+  maxSegmentLength: number
+): PathStringToRingResult {
   const ringPath = split(parsed)[0];
   const ring: Ring = [];
   let numPoints = 3;
