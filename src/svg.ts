@@ -15,7 +15,7 @@ export function toPathString(ring: Ring): string {
 
 export function pathStringToRing(
   str: string,
-  maxSegmentLength: number
+  maxSegmentLength?: number
 ): PathStringToRingResult {
   const parsed = parse(str);
   return exactRing(parsed) || approximateRing(parsed, maxSegmentLength);
@@ -64,7 +64,7 @@ function exactRing(parsed: SVGPathCommander): PathStringToRingResult | false {
 
 function approximateRing(
   parsed: SVGPathCommander,
-  maxSegmentLength: number
+  maxSegmentLength?: number
 ): PathStringToRingResult {
   const ringPath = split(parsed)[0];
   const ring: Ring = [];
