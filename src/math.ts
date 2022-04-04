@@ -6,6 +6,10 @@ export function distance(a: Point, b: Point): number {
   );
 }
 
+export function pointAlong(a: Point, b: Point, pct: number): Point {
+  return [a[0] + (b[0] - a[0]) * pct, a[1] + (b[1] - a[1]) * pct];
+}
+
 /**
  * 두 점이 근사적으로 같은 위치인지 확인
  */
